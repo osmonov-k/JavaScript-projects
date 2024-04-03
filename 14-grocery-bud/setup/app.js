@@ -17,6 +17,8 @@ form.addEventListener("submit", addItem);
 //clear items
 clearBtn.addEventListener('click', clearItems);
 
+
+
 // ****** FUNCTIONS **********
 function addItem(e) {
     e.preventDefault(); 
@@ -38,7 +40,12 @@ function addItem(e) {
           <button type="button" class="delete-btn">
             <i class="fas fa-trash"></i>
           </button>
-        </div>`
+        </div>`;
+        const deleteBtn = element.querySelector('.delete-btn');
+        const editBtn = element.querySelector('.edit-btn');
+        deleteBtn.addEventListener('click', deleteItem);
+        editBtn.addEventListener('click', editItem);
+
         //append child
         list.appendChild(element);
         //display alert
@@ -65,8 +72,7 @@ function displayAlert(text, action) {
     setTimeout( ()=>{
         alert.textContent = '';
         alert.classList.remove(`alert-${action}`);
-    }, 1000)
-
+    }, 1000);
 }
 //clear items
 
@@ -79,7 +85,28 @@ function clearItems() {
     }
     container.classList.remove('show-container');
     displayAlert('empty list', 'danger');
+    setBackToDefault();
+    // localStorage.removeItem('list');
 }
+
+//delete function
+const deleteItem = (e) => {
+    const element = e.currentTarget.parentElement.parentElement;
+    const id = element.dataset.id;
+    list.removeChild(element);
+    // if(list.children.length === 0) {
+    //     container.classList.remove('show-container');
+    // }
+    displayAlert('item removed', 'danger');
+    setBackToDefault();
+    // remove from local storage
+    // removeFromLocalStorage(id);
+}
+ //edit function
+ const editItem = () => {
+    console.log('edit item');
+}
+
 //set back to default
 const setBackToDefault = () => {
     grocery.value = '';
@@ -93,3 +120,4 @@ const addToLocalStorage = (id, value) => {
     console.log('add to local storage');
 }
 // ****** SETUP ITEMS **********
+
