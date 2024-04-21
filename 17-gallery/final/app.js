@@ -8,6 +8,7 @@ function getElement(selection) {
   );
 }
 
+
 function Gallery(element) {
   this.container = element;
   this.list = [...element.querySelectorAll('.img')];
