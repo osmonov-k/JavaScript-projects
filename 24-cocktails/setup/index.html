@@ -14,16 +14,23 @@
   </head>
 
   <body>
+    <!-- mine -->
     <form class="search-form">
-      <input type="text" class="input" />
+      <h2>Cocktails API</h2>
+      <input
+        type="text"
+        placeholder="search your favorite cocktail"
+        name="drink"
+      />
     </form>
-    <div class="coctails">
-      <div class="title"></div>
-      <div class="coctail">
-        <div class="cocktail img"></div>
-        <div class="coctail h3"></div>
-      </div>
-    </div>
+
+    <section class="section coctails">
+      <article class="loading">
+        <img src="./loading.gif" alt="loading" />
+      </article>
+      <h2 class="title"></h2>
+      <div class="section-center"></div>
+    </section>
 
     <script type="module" src="./app.js"></script>
   </body>
